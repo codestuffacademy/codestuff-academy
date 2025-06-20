@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeStuff Academy - Programming Workshops for Kids</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.15)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.08)"/><circle cx="60" cy="10" r="1.2" fill="rgba(255,255,255,0.12)"/><circle cx="10" cy="70" r="0.8" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 25s infinite linear;
+        }
+        
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(255,255,255,0.06) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        
+        .hero-section .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #ff5252 0%, #ff4444 100%);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6);
+        }
+        
+        .section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .two-phase-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            margin: 0;
+            max-width: none;
+        }
+        
+        .phase-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .phase-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .phase-number {
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-section {
+            background: #f8f9fa;
+            margin: 0;
+            max-width: none;
+        }
+        
+        .pricing-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pricing-card.featured {
+            border: 3px solid #ff6b6b;
+        }
+        
+        .pricing-card.featured::before {
+            content: 'EARLY BIRD SPECIAL';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin: 20px 0;
+        }
+        
+        .price.original {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            color: #999;
+            margin: 10px 0 5px 0;
+        }
+        
+        .price-note {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .instructor-section {
+            background: white;
+        }
+        
+        .instructor-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .instructor-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .faq-section {
+            background: #f8f9fa;
+            margin: 0;
+            max-width: none;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .faq-item {
+            background: white;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #5a6fd8;
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            background: white;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .program-features {
+            background: white;
+            padding: 60px 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+            background: linear-gradient(145deg, #ffffff 0%, #f0f4ff 100%);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotateY(5deg);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        .two-phase-section h2 {
+            color: white;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .phase-card h3 {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-section .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .phase-container,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .instructor-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .instructor-image {
+                height: 300px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .cta-button {
+                padding: 16px 32px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Programming Workshops for Tomorrow's Techies</h1>
+            <p class="subtitle">Code, Create, Play - From Visual Programming to Real Python Skills</p>
+            <a href="#pricing" class="cta-button">Register your interest now!</a>
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">(Scroll down for more info)</p>
+        </div>
+    </section>
+
+    <!-- Two-Phase Learning Journey -->
+    <section class="two-phase-section">
+        <div class="section">
+            <h2>Our Two-Phase Learning Journey</h2>
+            <div class="phase-container">
+                <div class="phase-card">
+                    <div class="phase-number">1</div>
+                    <h3>Visual Programming with Scratch</h3>
+                    <p><strong>Weeks 1-4:</strong> Build exciting games while learning core programming concepts through intuitive drag-and-drop blocks. Perfect for beginners!</p>
+                    <ul style="margin-top: 15px; text-align: left;">
+                        <li>Game creation fundamentals</li>
+                        <li>Logic and problem-solving</li>
+                        <li>Creative expression through code</li>
+                        <li>Showcase polished final project</li>
+                    </ul>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">2</div>
+                    <h3>Text-Based Python Programming</h3>
+                    <p><strong>Weeks 5-10:</strong> Create interactive "choose your own adventure" stories while transitioning to real code. Build substantial projects with confidence!</p>
+                    <ul style="margin-top: 15px; text-align: left;">
+                        <li>Real programming syntax</li>
+                        <li>Interactive storytelling</li>
+                        <li>Advanced coding concepts</li>
+                        <li>Complete text adventure game</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="section pricing-container">
+            <h2>Investment in Your Child's Future</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 20px;">Premium programming instruction from an expert who teaches at Melbourne's top biomedical institutes</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Pay As You Go</h3>
+                    <p>Start with Phase 1, continue if you love it</p>
+                    <div class="price">$140</div>
+                    <p class="price-note">Phase 1: $140 | Phase 2: $210</p>
+                    <ul style="text-align: left; margin: 20px 0;">
+                        <li>$35/hour per phase</li>
+                        <li>Flexibility to stop after Phase 1</li>
+                        <li>Small groups (max 5 students)</li>
+                        <li>Perfect for trying us out</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Start with Phase 1</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>Complete Program - BEST VALUE</h3>
+                    <p>Full Scratch + Python Journey (10 weeks)</p>
+                    <div class="price original">$350</div>
+                    <div class="price">$320</div>
+                    <p class="price-note">Just $32/hour - Save $30 with upfront payment!</p>
+                    <ul style="text-align: left; margin: 20px 0;">
+                        <li>10 weeks of expert instruction</li>
+                        <li>Scratch + Python programming</li>
+                        <li>Small groups (max 5 students)</li>
+                        <li>Guaranteed spot in both phases</li>
+                        <li><strong>$32/week - incredible value!</strong></li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Most Popular - Save $30</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px; padding: 20px; background: rgba(102, 126, 234, 0.1); border-radius: 10px;">
+                <p><strong>Why pay upfront?</strong> Lock in your spot for both phases and save $30! Plus, at just $32/hour, you're getting premium programming instruction for less than most music lessons or tutoring.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Features -->
+    <section class="program-features">
+        <h2>Skills for a Digital Future</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Gamified Learning</h3>
+                <p>Students learn through creating games and interactive stories, making programming fun and engaging from day one.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Critical Thinking</h3>
+                <p>Develop problem-solving skills and logical thinking that will serve students in any field they choose to explore.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Small Groups</h3>
+                <p>Maximum 5 students per cohort ensures personalized attention and plenty of opportunities for questions and support.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Future-Ready Skills</h3>
+                <p>Learn programming languages and concepts that translate directly to university computer science and tech careers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get to Know Us Section -->
+    <section class="instructor-section">
+        <div class="section">
+            <h2>Meet Your Instructor</h2>
+            <div class="instructor-content">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23667eea'/%3E%3Ctext x='150' y='200' font-family='Arial' font-size='16' fill='white' text-anchor='middle'%3EManveer's Photo%3C/text%3E%3C/svg%3E" alt="Manveer" class="instructor-image">
+                <div>
+                    <h3>Manveer</h3>
+                    <p>Hey there! I started coding in high school in America, and it's been a massive part of my life ever since. I went on to study Biology and Computer Science at the University of Melbourne, and I'm now a graduate student studying computational biology.</p>
+                    
+                    <p>As a graduate researcher, I regularly run programming workshops for researchers at Melbourne's leading biomedical institutes, teaching scientists how to use code to unlock insights from complex data. I also have extensive experience tutoring high school STEM subjects, and I've seen firsthand how coding builds critical thinking and problem-solving skills that benefit students across all disciplines.</p>
+                    
+                    <p>I'm excited to bring this same hands-on, practical approach to the next generation, guiding them from visual programming concepts in Scratch to real and translatable text-based coding skills in Python. Let's dive into the exciting realm of programming together!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="faq-section">
+        <div class="section faq-container">
+            <h2>FAQs</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Where will this take place?</div>
+                <div class="faq-answer">
+                    The location of our workshops will be determined based on the interest and convenience of our participants. We are committed to choosing accessible venues and will finalise our workshop locations once we have a better understanding of where our interested learners are based. Stay tuned for updates!
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How long is the program?</div>
+                <div class="faq-answer">
+                    The complete program runs for 10 weeks with one hour sessions per week. Phase 1 (Scratch) is 4 weeks, and Phase 2 (Python) is 6 weeks. You can choose to do just Phase 1 or both phases for the complete experience.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How much does the program cost?</div>
+                <div class="faq-answer">
+                    We offer two options: Pay-as-you-go with Phase 1 at $140 (4 weeks) and Phase 2 at $210 (6 weeks), or save $30 with our Complete Program at $320 total. That's just $32/hour for premium programming instruction - less than most tutoring or music lessons!
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What age group is this suitable for?</div>
+                <div class="faq-answer">
+                    Our program is designed for kids aged 13+ who are interested in learning programming. This age range ensures students have the attention span and abstract thinking skills needed for text-based Python programming. No prior coding experience is required - we start from the very basics!
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can my child join Phase 2 without doing Phase 1?</div>
+                <div class="faq-answer">
+                    We recommend starting with Phase 1 as it builds the foundational concepts that Phase 2 builds upon. However, if your child has prior Scratch experience, we can assess their readiness for Phase 2.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>CodeStuff Academy</h3>
+                <p>Programming Workshops for Tomorrow's Techies</p>
+            </div>
+            <div>
+                <p>codestuffacademy@gmail.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.display = 'none';
+                });
+                
+                // Toggle current answer
+                answer.style.display = isOpen ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
