@@ -150,6 +150,33 @@
                 radial-gradient(circle at 40% 20%, var(--white) 0%, transparent 50%);
         }
         
+        .code-float {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+            white-space: nowrap;
+            pointer-events: none;
+            animation: codeFloat 15s linear infinite;
+        }
+        
+        @keyframes codeFloat {
+            0% { 
+                opacity: 0; 
+                transform: translateY(100vh) translateX(0) rotate(-5deg);
+            }
+            10% { 
+                opacity: 0.3; 
+            }
+            90% { 
+                opacity: 0.3; 
+            }
+            100% { 
+                opacity: 0; 
+                transform: translateY(-100px) translateX(30px) rotate(5deg);
+            }
+        }
+        
         .hero-content {
             position: relative;
             z-index: 2;
@@ -1236,13 +1263,60 @@
         
         window.addEventListener('scroll', requestTick);
         
-        // Add hover sound effect (optional - commented out)
-        // const cards = document.querySelectorAll('.skill-card, .project-card, .pricing-card');
-        // cards.forEach(card => {
-        //     card.addEventListener('mouseenter', () => {
-        //         // Add subtle hover sound if desired
-        //     });
-        // });
+        // Interactive code animation in hero
+        const codeSnippets = [
+            'function create() {',
+            'if (idea == "awesome") {',
+            'return game.launch()',
+            'score += 100',
+            'player.levelUp()',
+            'print("Hello World!")',
+            'for i in range(10):',
+            'class GameCharacter:',
+            'def solve_puzzle():',
+            'while (learning) {',
+            '} else {',
+            'import creativity',
+            'array = [1, 2, 3]',
+            'if score > highScore:',
+            'function animate() {',
+            'player.x += speed',
+            'return success',
+            'def build_game():',
+            'console.log("Win!")',
+            'level.complete = true'
+        ];
+        
+        // Create initial code snippets
+        function createCodeSnippet() {
+            const heroSection = document.querySelector('.hero-section');
+            const snippet = document.createElement('div');
+            snippet.className = 'code-float';
+            snippet.style.left = Math.random() * 100 + '%';
+            snippet.style.fontSize = (Math.random() * 8 + 14) + 'px';
+            snippet.style.animationDelay = Math.random() * 15 + 's';
+            snippet.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            snippet.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+            heroSection.appendChild(snippet);
+        }
+        
+        // Create multiple snippets initially
+        for (let i = 0; i < 8; i++) {
+            setTimeout(() => createCodeSnippet(), i * 2000);
+        }
+        
+        // Continue creating new snippets
+        setInterval(createCodeSnippet, 3000);
+        
+        // Clean up old snippets
+        setInterval(() => {
+            const oldSnippets = document.querySelectorAll('.code-float');
+            oldSnippets.forEach((snippet, index) => {
+                if (index > 12) {
+                    snippet.remove();
+                }
+            });
+        }, 5000);
         
         // Loading animation for sections
         const observerOptions = {
