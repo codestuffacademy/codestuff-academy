@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeStuff Academy - Learn Programming, Build Your Future | Eastern Melbourne</title>
+    <title>CodeStuff Academy - Expert Coding Education | Melbourne</title>
     <style>
         * {
             margin: 0;
@@ -12,55 +12,46 @@
         }
         
         :root {
-            /* Matrix Theme Colors */
-            --matrix-dark-bg: #0a0a0a;
-            --matrix-darker: #000000;
-            --matrix-green-primary: #00ff41;
-            --matrix-green-secondary: #00d132;
-            --matrix-green-muted: #008f11;
-            --matrix-green-dim: #005511;
-            --text-primary: #ffffff;
-            --text-secondary: #e0e0e0;
-            --text-muted: #b0b0b0;
+            /* Professional Color Palette */
+            --primary-blue: #2C5F8D;
+            --accent-blue: #4A90D6;
+            --deep-blue: #1A3A52;
+            --light-blue: #E8F2FB;
             
-            /* Original accent colors for CTAs */
-            --accent-yellow: #fbbf24;
-            --accent-orange: #f97316;
+            /* Supporting Colors */
+            --warm-orange: #FF6B35;
+            --success-green: #28A745;
+            --light-gray: #F8F9FA;
+            --medium-gray: #6C757D;
+            --dark-gray: #2B3E50;
+            
+            /* Text Colors */
+            --text-primary: #2B3E50;
+            --text-secondary: #5A6C7D;
+            --text-white: #FFFFFF;
             
             /* Gradients */
-            --matrix-gradient: linear-gradient(135deg, var(--matrix-dark-bg) 0%, var(--matrix-green-dim) 100%);
-            --green-glow: 0 0 20px rgba(0, 255, 65, 0.5);
+            --hero-gradient: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            --subtle-gradient: linear-gradient(180deg, var(--light-gray) 0%, var(--text-white) 100%);
         }
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--matrix-darker);
+            background: var(--text-white);
             overflow-x: hidden;
-        }
-
-        /* Matrix Rain Background */
-        #matrix-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.15;
         }
         
         /* Trust Bar */
         .trust-bar {
-            background: var(--matrix-green-dim);
-            color: var(--text-primary);
+            background: var(--deep-blue);
+            color: var(--text-white);
             padding: 12px 20px;
             text-align: center;
             font-size: 0.9rem;
             position: relative;
             z-index: 100;
-            border-bottom: 1px solid var(--matrix-green-primary);
         }
         
         .trust-bar span {
@@ -71,20 +62,20 @@
         
         /* Location Header */
         .location-header {
-            background: var(--matrix-dark-bg);
+            background: var(--light-blue);
             padding: 10px 20px;
             text-align: center;
-            border-bottom: 1px solid var(--matrix-green-muted);
             font-size: 0.95rem;
-            color: var(--matrix-green-primary);
+            color: var(--primary-blue);
             position: relative;
             z-index: 100;
+            border-bottom: 1px solid rgba(44, 95, 141, 0.2);
         }
         
         /* Hero Section */
         .hero-section {
-            background: var(--matrix-darker);
-            color: var(--text-primary);
+            background: var(--hero-gradient);
+            color: var(--text-white);
             padding: 100px 20px;
             text-align: center;
             position: relative;
@@ -93,7 +84,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 2px solid var(--matrix-green-primary);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            opacity: 0.3;
         }
         
         .hero-content {
@@ -109,11 +111,7 @@
             margin-bottom: 20px;
             line-height: 1.1;
             letter-spacing: -0.02em;
-            text-shadow: var(--green-glow);
-            background: linear-gradient(45deg, var(--matrix-green-primary), var(--text-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .hero-section .subtitle {
@@ -125,7 +123,6 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
-            color: var(--text-secondary);
         }
         
         .fun-badges {
@@ -137,25 +134,24 @@
         }
         
         .fun-badge {
-            background: rgba(0, 255, 65, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             padding: 10px 20px;
             border-radius: 50px;
             font-size: 0.95rem;
             backdrop-filter: blur(10px);
-            border: 1px solid var(--matrix-green-muted);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
-            color: var(--matrix-green-primary);
         }
         
         .fun-badge:hover {
-            background: rgba(0, 255, 65, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: var(--green-glow);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         .early-bird-badge {
-            background: var(--accent-yellow);
-            color: var(--matrix-darker);
+            background: var(--warm-orange);
+            color: var(--text-white);
             padding: 12px 24px;
             border-radius: 50px;
             font-weight: 700;
@@ -163,23 +159,23 @@
             margin: 20px 0;
             animation: pulse-badge 2s infinite;
             font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
         }
         
         @keyframes pulse-badge {
             0%, 100% { 
                 transform: scale(1);
-                box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+                box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
             }
             50% { 
                 transform: scale(1.05);
-                box-shadow: 0 6px 20px rgba(251, 191, 36, 0.6);
+                box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
             }
         }
         
         .cta-button {
-            background: var(--matrix-green-primary);
-            color: var(--matrix-darker);
+            background: var(--warm-orange);
+            color: var(--text-white);
             padding: 16px 36px;
             font-size: 1.1rem;
             border: none;
@@ -189,7 +185,7 @@
             text-decoration: none;
             display: inline-block;
             font-weight: 600;
-            box-shadow: var(--green-glow);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
             margin: 10px;
             position: relative;
             overflow: hidden;
@@ -212,19 +208,19 @@
         
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(0, 255, 65, 0.6);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.4);
         }
         
         .cta-button.secondary {
             background: transparent;
-            border: 2px solid var(--matrix-green-primary);
-            color: var(--matrix-green-primary);
+            border: 2px solid var(--text-white);
+            color: var(--text-white);
             box-shadow: none;
         }
         
         .cta-button.secondary:hover {
-            background: rgba(0, 255, 65, 0.1);
-            box-shadow: var(--green-glow);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
         }
         
         /* Section Styles */
@@ -232,8 +228,10 @@
             padding: 80px 20px;
             position: relative;
             z-index: 1;
-            background: var(--matrix-dark-bg);
-            border-bottom: 1px solid var(--matrix-green-dim);
+        }
+        
+        .section:nth-child(even) {
+            background: var(--light-gray);
         }
         
         .section-header {
@@ -245,10 +243,9 @@
         .section-header h2 {
             font-size: 2.8rem;
             margin-bottom: 20px;
-            color: var(--matrix-green-primary);
+            color: var(--primary-blue);
             font-weight: 800;
             line-height: 1.2;
-            text-shadow: var(--green-glow);
         }
         
         .section-header p {
@@ -258,10 +255,6 @@
         }
         
         /* Skills Grid */
-        .why-section {
-            background: var(--matrix-darker);
-        }
-        
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -271,38 +264,19 @@
         }
         
         .skill-card {
-            background: rgba(0, 255, 65, 0.05);
+            background: var(--text-white);
             padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid var(--matrix-green-dim);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--matrix-green-primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .skill-card:hover::before {
-            transform: scaleX(1);
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .skill-card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--green-glow);
-            border-color: var(--matrix-green-primary);
-            background: rgba(0, 255, 65, 0.08);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            border-color: var(--accent-blue);
         }
         
         .skill-icon {
@@ -310,7 +284,6 @@
             margin-bottom: 20px;
             display: inline-block;
             transition: transform 0.3s ease;
-            filter: drop-shadow(0 0 10px var(--matrix-green-primary));
         }
         
         .skill-card:hover .skill-icon {
@@ -320,7 +293,7 @@
         .skill-card h3 {
             font-size: 1.3rem;
             margin-bottom: 15px;
-            color: var(--matrix-green-primary);
+            color: var(--primary-blue);
         }
         
         .skill-card p {
@@ -329,13 +302,6 @@
         }
 
         /* Testimonials Section */
-        .testimonials-section {
-            background: var(--matrix-darker);
-            padding: 80px 20px;
-            position: relative;
-            z-index: 1;
-        }
-
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -345,28 +311,29 @@
         }
 
         .testimonial-card {
-            background: rgba(0, 255, 65, 0.03);
-            padding: 30px;
+            background: var(--text-white);
+            padding: 35px;
             border-radius: 16px;
-            border: 1px solid var(--matrix-green-dim);
+            border-left: 4px solid var(--success-green);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             position: relative;
             transition: all 0.3s ease;
         }
 
         .testimonial-card:hover {
-            border-color: var(--matrix-green-primary);
-            box-shadow: var(--green-glow);
             transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
 
         .testimonial-card::before {
             content: '"';
             position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 4rem;
-            color: var(--matrix-green-muted);
-            opacity: 0.3;
+            top: 15px;
+            left: 25px;
+            font-size: 3rem;
+            color: var(--success-green);
+            opacity: 0.2;
+            font-family: Georgia, serif;
         }
 
         .testimonial-text {
@@ -379,21 +346,17 @@
         }
 
         .testimonial-author {
-            color: var(--matrix-green-primary);
+            color: var(--primary-blue);
             font-weight: 600;
             margin-bottom: 5px;
         }
 
         .testimonial-location {
-            color: var(--text-muted);
+            color: var(--medium-gray);
             font-size: 0.9rem;
         }
         
         /* Projects Section */
-        .projects-section {
-            background: var(--matrix-dark-bg);
-        }
-        
         .projects-showcase {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -403,25 +366,25 @@
         }
         
         .project-card {
-            background: rgba(0, 255, 65, 0.05);
+            background: var(--text-white);
             padding: 50px;
-            border-radius: 24px;
+            border-radius: 20px;
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--matrix-green-dim);
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
         
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--green-glow);
-            border-color: var(--matrix-green-primary);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            border-color: var(--accent-blue);
         }
         
         .project-number {
-            background: var(--matrix-green-primary);
-            color: var(--matrix-darker);
+            background: var(--accent-blue);
+            color: var(--text-white);
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -431,13 +394,13 @@
             font-weight: bold;
             font-size: 1.8rem;
             margin-bottom: 25px;
-            box-shadow: var(--green-glow);
+            box-shadow: 0 4px 15px rgba(74, 144, 214, 0.3);
         }
         
         .project-card h3 {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            color: var(--matrix-green-primary);
+            color: var(--primary-blue);
         }
         
         .project-card ul {
@@ -453,22 +416,19 @@
         }
         
         .project-card li::before {
-            content: '>';
+            content: '→';
             position: absolute;
             left: 0;
-            color: var(--matrix-green-primary);
+            color: var(--accent-blue);
             font-weight: bold;
-            font-family: 'Courier New', monospace;
         }
         
         /* Story Section */
         .story-section {
-            background: linear-gradient(135deg, var(--matrix-darker) 0%, var(--matrix-green-dim) 100%);
-            color: var(--text-primary);
+            background: var(--hero-gradient);
+            color: var(--text-white);
             position: relative;
             overflow: hidden;
-            border-top: 2px solid var(--matrix-green-primary);
-            border-bottom: 2px solid var(--matrix-green-primary);
         }
         
         .story-content {
@@ -480,9 +440,20 @@
         }
         
         .story-content h2 {
-            color: var(--matrix-green-primary);
+            color: var(--text-white);
             margin-bottom: 30px;
-            text-shadow: var(--green-glow);
+        }
+
+        .credentials-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+            font-size: 1.1rem;
         }
         
         .story-timeline {
@@ -495,37 +466,31 @@
         .timeline-item {
             text-align: center;
             padding: 20px;
-            background: rgba(0, 255, 65, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            border: 1px solid var(--matrix-green-muted);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .timeline-item:hover {
-            background: rgba(0, 255, 65, 0.15);
+            background: rgba(255, 255, 255, 0.15);
             transform: translateY(-5px);
-            box-shadow: var(--green-glow);
         }
         
         .timeline-icon {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            filter: drop-shadow(0 0 10px var(--matrix-green-primary));
         }
         
         .timeline-title {
             font-weight: 600;
             margin-bottom: 10px;
-            color: var(--matrix-green-primary);
+            color: var(--text-white);
             font-size: 1.1rem;
         }
         
         /* Pricing Section */
-        .pricing-section {
-            background: var(--matrix-darker);
-        }
-        
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -535,25 +500,26 @@
         }
         
         .pricing-card {
-            background: rgba(0, 255, 65, 0.05);
-            border-radius: 24px;
+            background: var(--text-white);
+            border-radius: 20px;
             padding: 50px 40px;
             text-align: center;
             position: relative;
             transition: all 0.3s ease;
-            border: 2px solid var(--matrix-green-dim);
+            border: 2px solid var(--light-blue);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         
         .pricing-card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--green-glow);
-            border-color: var(--matrix-green-primary);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            border-color: var(--accent-blue);
         }
         
         .pricing-card.featured {
-            border-color: var(--accent-yellow);
+            border-color: var(--warm-orange);
             transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.2);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
         }
         
         .pricing-card.featured::before {
@@ -562,41 +528,33 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--accent-yellow);
-            color: var(--matrix-darker);
+            background: var(--warm-orange);
+            color: var(--text-white);
             padding: 6px 24px;
             border-radius: 50px;
             font-weight: bold;
             font-size: 0.85rem;
-            box-shadow: 0 4px 10px rgba(251, 191, 36, 0.3);
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
         }
         
         .pricing-card h3 {
             font-size: 1.8rem;
             margin-bottom: 15px;
-            color: var(--matrix-green-primary);
+            color: var(--primary-blue);
         }
         
         .price {
             font-size: 3.5rem;
             font-weight: bold;
             margin: 20px 0;
-            color: var(--matrix-green-primary);
-            text-shadow: var(--green-glow);
+            color: var(--primary-blue);
         }
 
         .per-student {
             font-size: 1rem;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             margin-top: -15px;
             margin-bottom: 20px;
-        }
-        
-        .price-original {
-            text-decoration: line-through;
-            opacity: 0.6;
-            font-size: 2rem;
-            color: var(--text-muted);
         }
         
         .price-note {
@@ -622,16 +580,12 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--matrix-green-primary);
+            color: var(--success-green);
             font-weight: bold;
             font-size: 1.2rem;
         }
         
         /* Details Section */
-        .details-section {
-            background: var(--matrix-dark-bg);
-        }
-        
         .details-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -644,54 +598,46 @@
             text-align: center;
             padding: 30px;
             border-radius: 16px;
-            background: rgba(0, 255, 65, 0.05);
+            background: var(--text-white);
             transition: all 0.3s ease;
-            border: 1px solid var(--matrix-green-dim);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         
         .detail-item:hover {
-            background: rgba(0, 255, 65, 0.08);
             transform: translateY(-5px);
-            border-color: var(--matrix-green-primary);
-            box-shadow: var(--green-glow);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
         
         .detail-icon {
             font-size: 3rem;
             margin-bottom: 20px;
-            color: var(--matrix-green-primary);
-            filter: drop-shadow(0 0 10px var(--matrix-green-primary));
+            color: var(--accent-blue);
         }
         
         .detail-item h3 {
             font-size: 1.3rem;
             margin-bottom: 15px;
-            color: var(--matrix-green-primary);
+            color: var(--primary-blue);
         }
         
         /* FAQ Section */
-        .faq-section {
-            background: var(--matrix-darker);
-        }
-        
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
         }
         
         .faq-item {
-            background: rgba(0, 255, 65, 0.03);
+            background: var(--text-white);
             margin-bottom: 20px;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            border: 1px solid var(--matrix-green-dim);
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .faq-item:hover {
-            box-shadow: var(--green-glow);
-            border-color: var(--matrix-green-muted);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         
         .faq-question {
@@ -707,16 +653,15 @@
         }
         
         .faq-question:hover {
-            background: rgba(0, 255, 65, 0.05);
-            color: var(--matrix-green-primary);
+            background: var(--light-blue);
+            color: var(--primary-blue);
         }
         
         .faq-question::after {
             content: '+';
             font-size: 1.5rem;
-            color: var(--matrix-green-primary);
+            color: var(--accent-blue);
             transition: transform 0.3s ease;
-            font-family: 'Courier New', monospace;
         }
         
         .faq-item.active .faq-question::after {
@@ -749,12 +694,9 @@
         
         /* Contact Section */
         .contact-section {
-            background: var(--matrix-gradient);
-            color: var(--text-primary);
+            background: var(--deep-blue);
+            color: var(--text-white);
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-top: 2px solid var(--matrix-green-primary);
         }
         
         .contact-content {
@@ -765,9 +707,8 @@
         }
         
         .contact-content h2 {
-            color: var(--matrix-green-primary);
+            color: var(--text-white);
             margin-bottom: 20px;
-            text-shadow: var(--green-glow);
         }
         
         .contact-methods {
@@ -783,23 +724,22 @@
             align-items: center;
             gap: 10px;
             font-size: 1.1rem;
-            background: rgba(0, 255, 65, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             padding: 15px 25px;
             border-radius: 50px;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            border: 1px solid var(--matrix-green-muted);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .contact-method:hover {
-            background: rgba(0, 255, 65, 0.2);
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
-            box-shadow: var(--green-glow);
         }
 
         .register-button {
-            background: var(--accent-yellow);
-            color: var(--matrix-darker);
+            background: var(--warm-orange);
+            color: var(--text-white);
             padding: 18px 40px;
             font-size: 1.2rem;
             border: none;
@@ -809,13 +749,13 @@
             text-decoration: none;
             display: inline-block;
             font-weight: 700;
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
             margin: 30px 0;
         }
 
         .register-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(251, 191, 36, 0.6);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.6);
         }
         
         /* Mobile Responsiveness */
@@ -870,53 +810,41 @@
         .section {
             animation: fadeIn 0.8s ease;
         }
-
-        /* Matrix text effect for headings */
-        @keyframes matrix-flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        h1, h2 {
-            animation: matrix-flicker 3s ease-in-out infinite;
-        }
     </style>
 </head>
 <body>
-    <!-- Matrix Rain Canvas -->
-    <canvas id="matrix-canvas"></canvas>
-    
     <!-- Trust Indicators -->
     <div class="trust-bar">
-        <span>🎮 Create Games & Adventures</span>
-        <span>📍 Eastern Melbourne</span>
-        <span>💰 $50/hour per student</span>
+        <span>🎓 Expert-Led Instruction</span>
+        <span>📍 Melbourne-Wide Service</span>
+        <span>💰 $49.99/hour per student</span>
     </div>
     
     <!-- Location Header -->
     <div class="location-header">
-        📍 Serving Doncaster, Box Hill, Balwyn, Camberwell & surrounding Eastern suburbs
+        📍 Serving Eltham, Doncaster, Box Hill, Balwyn, Camberwell & surrounding suburbs
     </div>
 
     <!-- Hero Section -->
     <section class="hero-section">
+        <div class="hero-pattern"></div>
         <div class="hero-content">
-            <h1>Enter the Code Matrix:<br>Master Programming, Control Your Future</h1>
-            <p class="subtitle">Join Melbourne's most innovative teen programming academy where you'll build real games while discovering how coding unlocks infinite possibilities</p>
+            <h1>Expert Coding Education<br>for Tomorrow's Innovators</h1>
+            <p class="subtitle">Learn programming from a computational neuroscientist who's taught at Melbourne's leading research institutes. Build real projects while developing critical thinking skills for any career path.</p>
             
             <div class="fun-badges">
-                <div class="fun-badge">🎮 Build Your Own Games</div>
-                <div class="fun-badge">🐍 Master Python</div>
-                <div class="fun-badge">🚀 10 Weeks to Code Mastery</div>
+                <div class="fun-badge">🎮 Create Your Own Games</div>
+                <div class="fun-badge">🐍 Master Python Programming</div>
+                <div class="fun-badge">🚀 10-Week Comprehensive Program</div>
             </div>
             
             <div class="early-bird-badge">
-                🔥 Limited Time: First 10 Students Only - $50/hour
+                🔥 Limited Enrollment - Small Groups Only
             </div>
             
             <div>
-                <a href="#pricing" class="cta-button">Enter the Matrix</a>
-                <a href="#projects" class="cta-button secondary">See Your Future Creations</a>
+                <a href="#pricing" class="cta-button">Start Your Journey</a>
+                <a href="#about" class="cta-button secondary">Meet Your Instructor</a>
             </div>
         </div>
     </section>
@@ -924,40 +852,40 @@
     <!-- Why Programming Section -->
     <section class="why-section section">
         <div class="section-header">
-            <h2>Why Every Teen Should Learn to Code</h2>
-            <p>Programming isn't just about computers - it's about unlocking your mind's potential</p>
+            <h2>Why Every Student Should Learn to Code</h2>
+            <p>Programming develops essential skills that enhance academic performance and future opportunities</p>
         </div>
         
         <div class="skills-grid">
             <div class="skill-card">
-                <div class="skill-icon">🧩</div>
-                <h3>Problem-Solving Matrix</h3>
-                <p>Decode complex challenges into simple solutions - essential for medicine, business, and science</p>
+                <div class="skill-icon">🧠</div>
+                <h3>Critical Thinking</h3>
+                <p>Develop analytical skills essential for science, mathematics, and complex problem-solving</p>
             </div>
             <div class="skill-card">
                 <div class="skill-icon">💡</div>
-                <h3>Creative Digital Art</h3>
-                <p>Programming is modern creativity - build interactive worlds limited only by imagination</p>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">🔮</div>
-                <h3>Future-Proof Skills</h3>
-                <p>Whether doctor, artist, or entrepreneur - code literacy gives you the competitive edge</p>
+                <h3>Creative Innovation</h3>
+                <p>Express ideas through interactive projects and bring imagination to life</p>
             </div>
             <div class="skill-card">
                 <div class="skill-icon">🎯</div>
-                <h3>Logic Architecture</h3>
-                <p>Build structured thinking patterns that excel in mathematics, sciences, and analytics</p>
+                <h3>Future-Ready Skills</h3>
+                <p>Gain competitive advantage in any field with computational literacy</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>Logical Reasoning</h3>
+                <p>Build structured thinking patterns that excel in academics and beyond</p>
             </div>
             <div class="skill-card">
                 <div class="skill-icon">🏗️</div>
-                <h3>Create Real Impact</h3>
-                <p>Experience the power of building something from nothing that others can use and enjoy</p>
+                <h3>Project Development</h3>
+                <p>Learn to plan, build, and complete projects from concept to completion</p>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🌟</div>
-                <h3>Confidence Protocol</h3>
-                <p>Master valuable skills that make you stand out in any field you choose to pursue</p>
+                <div class="skill-icon">⭐</div>
+                <h3>Confidence Building</h3>
+                <p>Master valuable skills that boost self-esteem and academic confidence</p>
             </div>
         </div>
     </section>
@@ -965,41 +893,41 @@
     <!-- Testimonials Section -->
     <section class="testimonials-section section">
         <div class="section-header">
-            <h2>Parent Reviews</h2>
-            <p>Real feedback from Eastern Melbourne families</p>
+            <h2>What Parents Are Saying</h2>
+            <p>Real experiences from Melbourne families</p>
         </div>
         
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    "My daughter went from gaming all day to actually creating her own games! The structured approach and small class sizes mean she gets real attention. She's now confident explaining coding concepts and excited about her future in tech. Worth every dollar."
+                    "My daughter Emily has transformed from a casual gamer to someone who creates her own interactive stories! The small class size means she gets proper attention, and Manveer's scientific background really shows in how he explains complex concepts. She's more confident in maths class now too."
                 </div>
                 <div class="testimonial-author">Karen Gill</div>
-                <div class="testimonial-location">Glen Waverley</div>
+                <div class="testimonial-location">Glen Waverley Parent</div>
             </div>
             
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    "As a physiotherapist, I was skeptical about more screen time. But this is different - it's productive, educational, and builds real skills. My son's logical thinking has improved across all subjects. The instructors are patient and genuinely care about each student's progress."
+                    "I was initially concerned about adding more screen time, but this program is completely different. My son is learning real skills that complement his schoolwork. His problem-solving abilities have noticeably improved, and he actually looks forward to his coding sessions each week."
                 </div>
                 <div class="testimonial-author">Pam Sidhu</div>
-                <div class="testimonial-location">Box Hill</div>
+                <div class="testimonial-location">Box Hill Parent</div>
             </div>
             
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    "Working in tech myself, I know the importance of learning programming properly. CodeStuff teaches real computational thinking, not just copying code. My kids look forward to every session and the progress is remarkable. Highly recommend for any parent wanting future-ready kids."
+                    "As someone in the tech industry, I appreciate the depth of knowledge Manveer brings. He's not just teaching kids to copy code - he's teaching them to think like programmers. Both my children have shown remarkable progress and genuinely enjoy the learning process."
                 </div>
                 <div class="testimonial-author">David Chen</div>
-                <div class="testimonial-location">Glen Waverley</div>
+                <div class="testimonial-location">Balwyn Parent</div>
             </div>
             
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    "The curriculum is exceptionally well-designed. My daughter has developed problem-solving skills that help in all her subjects. She's gone from shy to confidently presenting her projects. The focus on perseverance and systematic thinking is exactly what teens need."
+                    "The structured curriculum and professional approach have exceeded my expectations. My daughter has gone from being hesitant about technology to confidently presenting her coding projects. The skills she's learning extend far beyond just programming."
                 </div>
                 <div class="testimonial-author">Melissa Singh</div>
-                <div class="testimonial-location">Doncaster</div>
+                <div class="testimonial-location">Doncaster Parent</div>
             </div>
         </div>
     </section>
@@ -1007,72 +935,75 @@
     <!-- Fun Projects Section -->
     <section class="projects-section section" id="projects">
         <div class="section-header">
-            <h2>Your 10-Week Transformation</h2>
-            <p>From zero to creating real projects that amaze</p>
+            <h2>What Students Create</h2>
+            <p>A structured pathway from visual programming to real code</p>
         </div>
         
         <div class="projects-showcase">
             <div class="project-card">
                 <div class="project-number">1</div>
-                <h3>Weeks 1-4: Game Development Matrix</h3>
-                <p><strong>Build 3 Epic Games:</strong></p>
+                <h3>Foundation Phase: Visual Programming</h3>
+                <p><strong>Weeks 1-4: Build Interactive Games</strong></p>
                 <ul>
-                    <li>🏃 Multi-level platformer adventure</li>
-                    <li>🎯 Action game with advanced scoring</li>
-                    <li>🧩 Custom puzzle game you design</li>
+                    <li>Design multi-level platform games</li>
+                    <li>Create action games with scoring systems</li>
+                    <li>Develop custom puzzle games</li>
                 </ul>
-                <p style="margin-top: 20px;">Master programming fundamentals through Scratch's visual interface - powerful enough for impressive creations!</p>
+                <p style="margin-top: 20px;">Using Scratch's intuitive interface, students grasp fundamental programming concepts while creating impressive projects.</p>
             </div>
             
             <div class="project-card">
                 <div class="project-number">2</div>
-                <h3>Weeks 5-10: Python Power Protocol</h3>
-                <p><strong>Code Interactive Adventures:</strong></p>
+                <h3>Advanced Phase: Python Programming</h3>
+                <p><strong>Weeks 5-10: Code Real Applications</strong></p>
                 <ul>
-                    <li>📖 Design branching storylines</li>
-                    <li>🎭 Create immersive worlds</li>
-                    <li>🎮 Build complete adventure games</li>
+                    <li>Build text-based adventure games</li>
+                    <li>Create interactive story engines</li>
+                    <li>Develop problem-solving algorithms</li>
                 </ul>
-                <p style="margin-top: 20px;">Level up to real Python code - the language powering Instagram, YouTube, and AI systems worldwide.</p>
+                <p style="margin-top: 20px;">Transition to Python - the world's most versatile programming language used in data science, web development, and AI.</p>
             </div>
         </div>
     </section>
 
-    <!-- Manveer's Story Section -->
-    <section class="story-section section">
+    <!-- About Manveer Section -->
+    <section class="story-section section" id="about">
         <div class="story-content">
-            <h2>From Gamer to Game-Changer</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 20px;">Hi, I'm Manveer - your guide into the programming matrix</p>
+            <h2>Learn from a Leading Expert</h2>
+            
+            <div class="credentials-badge">
+                🧠 Neuroscientist & Computational Biologist at the Florey Institute
+            </div>
             
             <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; line-height: 1.8;">
-                I discovered programming in high school, thinking it was just about computers. What I found was a superpower - a new way of thinking that transforms how you solve any problem. Today, I use code to analyze biological data and help researchers make breakthrough discoveries. The computational thinking I learned through programming has been my secret weapon in both biology and research.
+                Hi, I'm Manveer. As a computational biologist at the Florey Institute of Neuroscience and Mental Health, I use programming daily to unlock mysteries of the human brain. My experience teaching coding workshops at leading biomedical institutes across Melbourne has shown me how to make complex concepts accessible and engaging for young learners.
             </p>
             
             <div class="story-timeline">
                 <div class="timeline-item">
-                    <div class="timeline-icon">🎮</div>
-                    <div class="timeline-title">Started Gaming</div>
-                    <p>Just like you - making fun projects in school</p>
+                    <div class="timeline-icon">🔬</div>
+                    <div class="timeline-title">Research Scientist</div>
+                    <p>Florey Institute of Neuroscience</p>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-icon">🎓</div>
-                    <div class="timeline-title">University Edge</div>
-                    <p>Programming skills accelerated my Biology & CS studies</p>
+                    <div class="timeline-title">Expert Educator</div>
+                    <p>Teaching at Melbourne's top institutes</p>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon">🔬</div>
-                    <div class="timeline-title">Research Impact</div>
-                    <p>Now decoding life's mysteries with computational biology</p>
+                    <div class="timeline-icon">💻</div>
+                    <div class="timeline-title">Code Specialist</div>
+                    <p>Python, data analysis, and more</p>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon">👨‍🏫</div>
-                    <div class="timeline-title">Sharing Knowledge</div>
-                    <p>Helping teens unlock their own superpowers</p>
+                    <div class="timeline-icon">🌟</div>
+                    <div class="timeline-title">Youth Mentor</div>
+                    <p>Inspiring the next generation</p>
                 </div>
             </div>
             
             <p style="margin-top: 40px; font-style: italic; font-size: 1.1rem;">
-                "Programming isn't a career choice - it's a thinking upgrade that powers any path you choose."
+                "I believe every student should understand how programming shapes our world - not just for career prospects, but for the critical thinking skills it develops."
             </p>
         </div>
     </section>
@@ -1081,40 +1012,39 @@
     <section class="pricing-section section" id="pricing">
         <div class="pricing-container">
             <div class="section-header">
-                <h2>Investment in Your Future</h2>
-                <p>Choose your path into the programming matrix</p>
+                <h2>Investment in Excellence</h2>
+                <p>Professional instruction at competitive rates</p>
             </div>
             
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3>Trial Run</h3>
-                    <p>Test the waters</p>
+                    <h3>Pay As You Go</h3>
+                    <p>Flexible learning option</p>
                     <div class="price">$50</div>
                     <div class="per-student">per hour, per student</div>
-                    <p class="price-note">Pay as you go - no commitment</p>
+                    <p class="price-note">No long-term commitment</p>
                     <ul>
                         <li>Phase 1: 4 weeks Scratch ($200)</li>
                         <li>Phase 2: 6 weeks Python ($300)</li>
                         <li>Small groups (max 5 students)</li>
                         <li>Flexible scheduling</li>
-                        <li>Cancel anytime</li>
+                        <li>Professional instruction</li>
                     </ul>
-                    <a href="https://forms.gle/3y4vt8XRhZu5PMwf6" target="_blank" class="cta-button">Start Trial</a>
+                    <a href="https://forms.gle/3y4vt8XRhZu5PMwf6" target="_blank" class="cta-button">Get Started</a>
                 </div>
                 
                 <div class="pricing-card featured">
-                    <h3>Full Matrix Access</h3>
-                    <p>Complete transformation package</p>
+                    <h3>Complete Program</h3>
+                    <p>Maximum value package</p>
                     <div class="price">$450</div>
-                    <div class="per-student">for complete 10-week program</div>
+                    <div class="per-student">for full 10-week program</div>
                     <p class="price-note">Save $50 - Best value!</p>
                     <ul>
                         <li>All 10 weeks included</li>
                         <li>Just $45 per hour (10% savings)</li>
                         <li>Priority scheduling</li>
                         <li>Completion certificate</li>
-                        <li>Guaranteed progression</li>
-                        <li>Progress reports</li>
+                        <li>Guaranteed placement</li>
                     </ul>
                     <a href="https://forms.gle/3y4vt8XRhZu5PMwf6" target="_blank" class="cta-button">Secure Your Spot</a>
                 </div>
@@ -1125,24 +1055,24 @@
     <!-- Program Details Section -->
     <section class="details-section section">
         <div class="section-header">
-            <h2>Program Protocol</h2>
+            <h2>Program Details</h2>
         </div>
         
         <div class="details-grid">
             <div class="detail-item">
                 <div class="detail-icon">📍</div>
-                <h3>Strategic Locations</h3>
-                <p>Library meeting rooms in Eastern suburbs - location based on student convenience</p>
+                <h3>Flexible Locations</h3>
+                <p>Convenient scheduling with in-home instruction, central meeting locations, or online via Zoom</p>
             </div>
             <div class="detail-item">
-                <div class="detail-icon">🖥️</div>
-                <h3>Hybrid Learning</h3>
-                <p>In-person for best results, Zoom backup for flexibility</p>
+                <div class="detail-icon">👥</div>
+                <h3>Small Groups</h3>
+                <p>Maximum 5 students ensures personalized attention and peer learning</p>
             </div>
             <div class="detail-item">
-                <div class="detail-icon">⏰</div>
+                <div class="detail-icon">📅</div>
                 <h3>Weekly Sessions</h3>
-                <p>1 hour weekly, scheduled around school and activities</p>
+                <p>One hour per week, scheduled around school and family commitments</p>
             </div>
         </div>
     </section>
@@ -1156,55 +1086,55 @@
         <div class="faq-container">
             <div class="faq-item">
                 <div class="faq-question">
-                    Is this just for future programmers?
+                    What makes your program different from others?
                 </div>
                 <div class="faq-answer">
-                    No! Programming is a thinking skill, not just a career. It teaches problem-solving and logic that enhance any profession - from medicine to art to business. Think of it as upgrading your brain's operating system.
+                    Our program is led by a practicing scientist from the Florey Institute who brings real-world applications to every lesson. The combination of research expertise and teaching experience at Melbourne's top institutes ensures your child receives world-class instruction in an engaging, age-appropriate format.
                 </div>
             </div>
             
             <div class="faq-item">
                 <div class="faq-question">
-                    My teen has zero coding experience - is that okay?
+                    Is prior coding experience required?
                 </div>
                 <div class="faq-answer">
-                    Perfect! We start from absolute zero. Our visual approach makes concepts clear, and small groups ensure nobody gets left behind. Most successful students start as complete beginners.
+                    Not at all! We start with visual programming that makes concepts clear for absolute beginners. Our structured approach ensures every student builds a solid foundation before progressing to more advanced topics.
                 </div>
             </div>
             
             <div class="faq-item">
                 <div class="faq-question">
-                    Where exactly are classes held?
+                    Which suburbs do you service?
                 </div>
                 <div class="faq-answer">
-                    We use library meeting rooms across Eastern Melbourne - Box Hill, Doncaster, Balwyn, etc. Once enrolled, we survey families to find the most central location. Zoom option always available.
+                    We serve Eltham, Doncaster, Box Hill, Balwyn, Camberwell, and surrounding areas. Classes can be arranged at convenient library locations, in-home, or online via Zoom to accommodate all families.
                 </div>
             </div>
             
             <div class="faq-item">
                 <div class="faq-question">
-                    Why not just use free online tutorials?
+                    How does the small group format work?
                 </div>
                 <div class="faq-answer">
-                    Personal guidance changes everything! Small groups mean immediate help, peer learning, and accountability. 95% of online learners quit - our students actually finish and build real projects.
+                    With maximum 5 students per group, each child receives individual attention while benefiting from collaborative learning. Students are grouped by age and skill level to ensure optimal learning dynamics.
                 </div>
             </div>
             
             <div class="faq-item">
                 <div class="faq-question">
-                    What if we miss a session?
+                    What if my child misses a session?
                 </div>
                 <div class="faq-answer">
-                    No problem! Join via Zoom, get comprehensive notes, and we'll catch you up next session. Just communicate with us - flexibility is built into our system.
+                    We understand busy schedules! Missed sessions can be attended via Zoom, and we provide comprehensive notes and catch-up support. The key is communication - just let us know in advance.
                 </div>
             </div>
             
             <div class="faq-item">
                 <div class="faq-question">
-                    Why is the pricing per student?
+                    Why is the rate per student rather than per session?
                 </div>
                 <div class="faq-answer">
-                    Small group dynamics (max 5 students) ensure everyone gets personal attention while benefiting from peer learning. The $50/hour per student rate keeps quality high and groups intimate.
+                    The per-student model ensures small group sizes and quality instruction. At $49.99 per hour, you're investing in expert-led education that provides exceptional value compared to generic online courses or larger classes.
                 </div>
             </div>
         </div>
@@ -1213,11 +1143,11 @@
     <!-- Contact Section -->
     <section class="contact-section section" id="contact">
         <div class="contact-content">
-            <h2>Ready to Enter the Matrix?</h2>
-            <p>Join our next cohort and unlock your coding superpowers</p>
+            <h2>Ready to Begin?</h2>
+            <p>Join Melbourne's premier coding education program</p>
             
             <a href="https://forms.gle/3y4vt8XRhZu5PMwf6" target="_blank" class="register-button">
-                🚀 Register Interest Now
+                📝 Register Your Interest
             </a>
             
             <div class="contact-methods">
@@ -1231,55 +1161,11 @@
                 </div>
             </div>
             
-            <p style="margin-top: 30px; opacity: 0.9;">Include your suburb and preferred times in your message</p>
+            <p style="margin-top: 30px; opacity: 0.9;">Please include your suburb and preferred session times</p>
         </div>
     </section>
 
     <script>
-        // Matrix Rain Effect
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-        const matrixArray = matrix.split("");
-
-        const fontSize = 10;
-        const columns = canvas.width / fontSize;
-
-        const drops = [];
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
-
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#00ff41';
-            ctx.font = fontSize + 'px monospace';
-
-            for(let i = 0; i < drops.length; i++) {
-                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(draw, 35);
-
-        // Resize canvas on window resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1307,26 +1193,10 @@
             });
         });
         
-        // Animated counter for spots
-        let spotsRemaining = 10;
-        const updateSpots = () => {
-            const badges = document.querySelectorAll('.early-bird-badge');
-            if (spotsRemaining > 3) {
-                setTimeout(() => {
-                    spotsRemaining--;
-                    badges.forEach(badge => {
-                        badge.innerHTML = `🔥 Limited Time: First ${spotsRemaining} Students Only - $50/hour`;
-                    });
-                    updateSpots();
-                }, Math.random() * 30000 + 20000);
-            }
-        };
-        updateSpots();
-        
         // Interactive project cards
         document.querySelectorAll('.project-card').forEach((card, index) => {
             card.addEventListener('click', function() {
-                this.style.transform = 'scale(1.05)';
+                this.style.transform = 'scale(1.02)';
                 setTimeout(() => {
                     this.style.transform = '';
                 }, 300);
@@ -1344,7 +1214,7 @@
                 if (charIndex < originalText.length) {
                     subtitle.textContent += originalText[charIndex];
                     charIndex++;
-                    setTimeout(typeText, 30);
+                    setTimeout(typeText, 20);
                 }
             };
             
